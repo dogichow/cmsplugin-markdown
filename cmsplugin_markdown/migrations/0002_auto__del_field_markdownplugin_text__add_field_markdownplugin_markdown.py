@@ -10,10 +10,10 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Deleting field 'MarkdownPlugin.text'
-        db.delete_column('cmsplugin_markdownplugin', 'text')
+        db.delete_column('cmsplugin_markdown_markdownplugin', 'text')
 
         # Adding field 'MarkdownPlugin.markdown_text'
-        db.add_column('cmsplugin_markdownplugin', 'markdown_text',
+        db.add_column('cmsplugin_markdown_markdownplugin', 'markdown_text',
                       self.gf('django.db.models.fields.TextField')(default=1, max_length=8000),
                       keep_default=False)
 
@@ -23,7 +23,7 @@ class Migration(SchemaMigration):
         # User chose to not deal with backwards NULL issues for 'MarkdownPlugin.text'
         raise RuntimeError("Cannot reverse this migration. 'MarkdownPlugin.text' and its values cannot be restored.")
         # Deleting field 'MarkdownPlugin.markdown_text'
-        db.delete_column('cmsplugin_markdownplugin', 'markdown_text')
+        db.delete_column('cmsplugin_markdown_markdownplugin', 'markdown_text')
 
 
     models = {
@@ -48,7 +48,7 @@ class Migration(SchemaMigration):
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
         },
         'cmsplugin_markdown.markdownplugin': {
-            'Meta': {'object_name': 'MarkdownPlugin', 'db_table': "'cmsplugin_markdownplugin'", '_ormbases': ['cms.CMSPlugin']},
+            'Meta': {'object_name': 'MarkdownPlugin', 'db_table': "'cmsplugin_markdown_markdownplugin'", '_ormbases': ['cms.CMSPlugin']},
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
             'markdown_text': ('django.db.models.fields.TextField', [], {'max_length': '8000'})
         }

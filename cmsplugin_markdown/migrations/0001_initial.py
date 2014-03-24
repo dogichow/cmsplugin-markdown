@@ -10,7 +10,7 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         # Adding model 'MarkdownPlugin'
-        db.create_table('cmsplugin_markdownplugin', (
+        db.create_table('cmsplugin_markdown_markdownplugin', (
             ('cmsplugin_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['cms.CMSPlugin'], unique=True, primary_key=True)),
             ('text', self.gf('django.db.models.fields.TextField')(max_length=8000)),
         ))
@@ -19,7 +19,7 @@ class Migration(SchemaMigration):
 
     def backwards(self, orm):
         # Deleting model 'MarkdownPlugin'
-        db.delete_table('cmsplugin_markdownplugin')
+        db.delete_table('cmsplugin_markdown_markdownplugin')
 
 
     models = {
@@ -44,7 +44,7 @@ class Migration(SchemaMigration):
             'slot': ('django.db.models.fields.CharField', [], {'max_length': '50', 'db_index': 'True'})
         },
         'cmsplugin_markdown.markdownplugin': {
-            'Meta': {'object_name': 'MarkdownPlugin', 'db_table': "'cmsplugin_markdownplugin'", '_ormbases': ['cms.CMSPlugin']},
+            'Meta': {'object_name': 'MarkdownPlugin', 'db_table': "'cmsplugin_markdown_markdownplugin'", '_ormbases': ['cms.CMSPlugin']},
             'cmsplugin_ptr': ('django.db.models.fields.related.OneToOneField', [], {'to': "orm['cms.CMSPlugin']", 'unique': 'True', 'primary_key': 'True'}),
             'text': ('django.db.models.fields.TextField', [], {'max_length': '8000'})
         }
